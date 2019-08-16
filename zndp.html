@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/zndp.css" />
+    <style>
+        .nongqi_right>ul>.find{
+            background-color: #2cbcff;
+            color: #0a1a3d;
+        }
+
+        #lbe_main2 > #echarts2>.f{
+            display: none;
+        }
+        #lbe_main2> #echarts2>.find{
+            display: block;
+            margin-top: -16px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script>
+    let currentActiveRow;
+    function iot(div){
+        window.location.href="iot.html";
+    }
+
+    function nysc(){
+        window.location.href="tsny.html";
+    }
+</script>
+     <!--温室外实时数据-->
+     <div class="box">
+         <div class="sssj">
+                 <div class="left_header1">温室外环境实时数据</div>
+                 <ul>
+                     <div class="echarts">
+                         <div id="yibiao" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao1" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao2" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao3" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                 </ul>
+                 <ul id="xm_ul">
+                     <div class="ceshi" style="margin-left:70px" ><img
+                             src="img/zhenjiang/nyziyuan/fengxiang4.png"
+                             alt="">
+                         <p style="color: #fff;font-size: 16px;text-align: center">西风</p>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao4" style="width: 75px;height: 100px;left: -30px;top: -10px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao5" style="width: 75px;height: 100px;left: -65px;top: -10px">
+                         </div>
+                     </div>
+                 </ul>
+         </div>
+             <div class="lbe nongqi" id="lbe_main1">
+                 <div class="lbe_hearder">温室外环境数据统计</div>
+                 <ul>
+                     <li name="s1" class="select">空气湿度</li>
+                     <li name="s1" class="">空气温度</li>
+                     <li name="s1" class="">光照</li>
+                     <li name="s1" class="">风速</li>
+                 </ul>
+                 <div class="echarts1">
+                     <div name="kuai" class="select" id="select" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="kuai" class="s" id="select1" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="kuai" class="s" id="select2" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="kuai" class="s" id="select3" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                 </div>
+             </div>
+
+    <div class="wssj">
+            <div class="left_header3">温室外环境历史数据</div>
+            <table class="sensor-table">
+                <thead>
+                <tr >
+                    <th >日期</th>
+                    <th >土壤温度</th>
+                    <th >土壤湿度</th>
+                    <th >CO2浓度</th>
+                    <th >光照</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2019-07-25</td>
+                    <td>21.61°C</td>
+                    <td>57.42%</td>
+                    <td>376.18PPM</td>
+                    <td>38.43KLUX</td>
+                </tr>
+                <tr >
+                    <td>2019-07-24</td>
+                    <td>20.40°C</td>
+                    <td>87.06%</td>
+                    <td>353.54PPM</td>
+                    <td>55.91KLUX</td>
+                </tr>
+                <tr>
+                    <td>2019-07-24</td>
+                    <td>20.40°C</td>
+                    <td>87.06%</td>
+                    <td>353.54PPM</td>
+                    <td>55.91KLUX</td>
+                </tr>
+                <tr>
+                    <td>2019-07-22</td>
+                    <td>23.31°C</td>
+                    <td>50.96%</td>
+                    <td>396.03PPM</td>
+                    <td>52.38KLUX</td>
+                </tr>
+                <tr>
+                    <td>2019-07-22</td>
+                    <td>23.31°C</td>
+                    <td>50.96%</td>
+                    <td>396.03PPM</td>
+                    <td>52.38KLUX</td>
+                </tr>
+                <tr>
+                    <td>2019-07-22</td>
+                    <td>23.31°C</td>
+                    <td>50.96%</td>
+                    <td>396.03PPM</td>
+                    <td>52.38KLUX</td>
+                </tr>
+                <tr>
+                    <td>2019-07-22</td>
+                    <td>23.31°C</td>
+                    <td>50.96%</td>
+                    <td>396.03PPM</td>
+                    <td>52.38KLUX</td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+         <div class="sssj_right">
+             <div class="right_header1">温室内环境实时数据</div>
+                 <ul>
+                     <div class="echarts">
+                         <div id="yibiao1_1" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao1_2" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao1_3" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao1_4" style="width: 75px;height: 100px">
+                         </div>
+                     </div>
+                 </ul>
+                 <ul id="xm_ul_right">
+                     <div class="echarts">
+                         <div id="yibiao1_5" style="width: 75px;height: 100px;left: 65px;top: -10px">
+                         </div>
+                     </div>
+                     <div class="echarts">
+                         <div id="yibiao1_6" style="width: 75px;height: 100px;left: -65px;top: -10px">
+                         </div>
+                     </div>
+                 </ul>
+         </div>
+             <div class="lbe_main_right nongqi_right" id="lbe_main2">
+                 <div class="lbe_hearder_right">温室内环境数据统计</div>
+                 <ul>
+                     <li name="f1" class="find">土壤温度</li>
+                     <li name="f1" class="">土壤湿度</li>
+                     <li name="f1" class="">二氧化碳</li>
+                     <li name="f1" class="">空气湿度</li>
+                 </ul>
+                 <div id="echarts2">
+                     <div name="divkuai1" class="find" id="select4" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="divkuai1" class="f" id="select5" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="divkuai1" class="f" id="select6" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                     <div name="divkuai1" class="f" id="select7" style="width: 580px;height: 280px;margin-left:-23px"></div>
+                 </div>
+             </div>
+
+         <div class="wssj_right">
+                 <div class="right_header3">温室内环境历史数据</div>
+                 <table class="sensor-table1">
+                     <thead>
+                     <tr >
+                         <th >日期</th>
+                         <th >土壤温度</th>
+                         <th >土壤湿度</th>
+                         <th >CO2浓度</th>
+                         <th >光照</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                         <td>2019-07-25</td>
+                         <td>21.61°C</td>
+                         <td>57.42%</td>
+                         <td>376.18PPM</td>
+                         <td>38.43KLUX</td>
+                     </tr>
+                     <tr >
+                         <td>2019-07-24</td>
+                         <td>20.40°C</td>
+                         <td>87.06%</td>
+                         <td>353.54PPM</td>
+                         <td>55.91KLUX</td>
+                     </tr>
+                     <tr>
+                         <td>2019-07-24</td>
+                         <td>20.40°C</td>
+                         <td>87.06%</td>
+                         <td>353.54PPM</td>
+                         <td>55.91KLUX</td>
+                     </tr>
+                     <tr>
+                         <td>2019-07-22</td>
+                         <td>23.31°C</td>
+                         <td>50.96%</td>
+                         <td>396.03PPM</td>
+                         <td>52.38KLUX</td>
+                     </tr>
+                     <tr>
+                         <td>2019-07-22</td>
+                         <td>23.31°C</td>
+                         <td>50.96%</td>
+                         <td>396.03PPM</td>
+                         <td>52.38KLUX</td>
+                     </tr>
+                     <tr>
+                         <td>2019-07-22</td>
+                         <td>23.31°C</td>
+                         <td>50.96%</td>
+                         <td>396.03PPM</td>
+                         <td>52.38KLUX</td>
+                     </tr>
+                     <tr>
+                         <td>2019-07-22</td>
+                         <td>23.31°C</td>
+                         <td>50.96%</td>
+                         <td>396.03PPM</td>
+                         <td>52.38KLUX</td>
+                     </tr>
+
+                     </tbody>
+                 </table>
+             </div>
+       <div class="zjdp">
+         <iframe src="https://www.thingjs.com/guide/sampleindex.html?m=Q-84DC0862F3CBC0C0DB4608B7CD80240F/19t119028131.js" width="740" height="530"frameborder="no"></iframe>
+         </div>
+           <div class="xmsp">
+               <div class="myvideo" style="width:365px;height:285px;float: left " >
+                  <iframe src="html/nyboliwenshi.html" frameborder="0"
+                          style="width: 100%; height: 100%;">
+                  </iframe>
+               </div>
+               <div class="myvideo" style="width:370px;height:285px;float: right">
+                   <iframe src="html/wscl.html" frameborder="0"
+                           style="width: 100%; height: 100%;">
+                   </iframe>
+               </div>
+           </div>
+     </div>
+<script>
+    let box = document.getElementById("lbe_main1");
+    let lis = document.getElementsByName("s1")
+    let divs = document.getElementsByName("kuai");
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].aaa = i;
+        lis[i].onclick = function () {
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].className="";
+                divs[i].className="s";
+            }
+            this.className = "select";
+            let x = divs[i].className;
+          divs[this.aaa].className= x+"elect";
+        }
+    }
+</script>
+
+<script>
+    let box1 = document.getElementById("lbe_main2");
+    let lis1 = document.getElementsByName("f1");
+    let divs1 = document.getElementsByName("divkuai1");
+    for (let i = 0; i < lis1.length; i++) {
+        lis1[i].xxx = i;
+        lis1[i].onclick = function () {
+            for (let i = 0; i < lis1.length; i++) {
+                lis1[i].className ="";
+                divs1[i].className="f";
+            }
+            this.className = "find";
+            let x = divs1[i].className;
+            divs1[this.xxx].className= x+"ind";
+        }
+    }
+</script>
+<script type="text/javascript" src="js/echarts_center_right.js"></script>
+<!--
+ 中间的echarts
+-->
+<script type="text/javascript" src="js/echart_center_left.js"></script>
+<!--
+   左侧的彩虹仪表盘
+-->
+<script type="text/javascript" src="js/echarts_left.js"></script>
+<!--
+   右侧
+   的彩虹
+   仪表盘
+-->
+<script type="text/javascript" src="js/echarts_right.js"></script>
+</body>
+</html>

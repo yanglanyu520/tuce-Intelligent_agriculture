@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/iot.css" />
+</head>
+<body>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script>
+     let currentActiveRow;
+    function iot(div){
+           window.location.href="iot.html";
+    }
+    
+  function nysc(){
+      window.location.href="tsny.html";
+  }
+</script>
+<div class="app">
+    <div class="zhenjian">
+        <div id="map">
+            <!-- <div id="mapDiv"
+                 tabindex="0" style="position: relative;">-->
+        </div>
+        <div class="nav">
+            <div data-v-dd779392 class="select leftNav" onclick="iot()">物联网</div>
+            <div data-v-dd779392 class="leftNav" onclick="nysc()">特色农业</div>
+            <div data-v-dd779392 class="leftNav">特色产业</div>
+            <h1 data-v-dd779392="" style="padding: 10px 155px;font-size: 40px;color:#fff;margin-top:-10px;">大数据平台</h1>
+            <div data-v-dd779392 class="rightNav">农业监管</div>
+            <div data-v-dd779392 class="rightNav">数据查询</div>
+            <div data-v-dd779392 class="rightNav">农民收入</div>
+
+        </div>
+        <div class="xcqx">
+            <div class="xcqx_header">现场气象信息</div>
+            <div class="xcqx_main">
+                <ul >
+                    <div class="echarts">
+                        <div id="yibiao" style="position: relative;width: 75px;height: 100px">
+                        </div>
+                    </div>
+                    <div class="echarts">
+                        <div id="yibiao1" style="position: relative;width: 75px;height: 100px">
+                        </div>
+                    </div>
+                    <div class="echarts">
+                        <div id="yibiao2" style="position: relative;width: 75px;height: 100px">
+                        </div>
+                    </div>
+                    <div class="echarts">
+                        <div id="yibiao3" style="position: relative;width: 75px;height: 100px">
+                        </div>
+                    </div>
+                </ul>
+                <ul id="xm_ul">
+                    <div class="ceshi"><img
+                            src="img/zhenjiang/nyziyuan/fengxiang4.png"
+                            alt="">
+                        <p style="color: #fff;font-size: 16px;text-align: center">西风</p>
+                    </div>
+                    <div class="echarts">
+                        <div id="yibiao4" style="position: relative;width: 75px;height: 100px;left: -55px">
+                        </div>
+                    </div>
+                    <div class="echarts">
+                        <div id="yibiao5" style="position: relative;width: 75px;height: 100px;left: -115px">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="sssp">
+            <div class="sssp_hearder">实时视频</div>
+            <div class="sssp_main">
+                <div class="myVideo" style="margin-top: 30px;">
+                    <iframe src="http://114.67.97.221:9222/upload/htmls/video/video1.html" frameborder="0"
+                             style="width: 100%; height: 100%;"></iframe>
+                </div>
+                <div class="myVideo">
+                    <iframe  src="http://114.67.97.221:9222/upload/htmls/video/video1.html" frameborder="0"
+                             style="width: 100%; height: 100%;"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="lbe">
+            <div class="lbe_hearder" id="lbe_h">农气月报</div>
+            <div class="lbe_main nongqi" id="lbe_main1">
+                <ul>
+                    <li class="select" id="se">空气湿度</li>
+                    <li class="">空气温度</li>
+                    <li class="">光照</li>
+                    <li class="">风速</li>
+
+                </ul>
+                <div class="echarts1">
+                    <div name="divkuai" class="select" id="select" style="width: 468px;height: 350px;"></div>
+                    <div name="divkuai" class="s" id="select1" style="width: 468px;height: 350px;"></div>
+                    <div name="divkuai" class="s" id="select2" style="width: 468px;height: 350px;"></div>
+                    <div name="divkuai" class="s" id="select3" style="width: 468px;height: 350px;"></div>
+                </div>
+            </div>
+        </div>
+      <!--  <script>
+            let se = document.getElementById("se");
+                se.onclick = function () {
+                     alert("xxxxx");
+                }
+        </script>-->
+        <div class="nydata">
+            <div class="nydata_hearder">物联网数据</div>
+            <div class="nydata_main">
+                <table class="sensor-table">
+                    <thead>
+                    <tr >
+                        <th >日期</th>
+                        <th >土壤温度</th>
+                        <th >土壤湿度</th>
+                        <th >CO2浓度</th>
+                        <th >光照</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2019-07-25</td>
+                        <td>21.61°C</td>
+                        <td>57.42%</td>
+                        <td>376.18PPM</td>
+                        <td>38.43KLUX</td>
+                    </tr>
+                    <tr >
+                        <td>2019-07-24</td>
+                        <td>20.40°C</td>
+                        <td>87.06%</td>
+                        <td>353.54PPM</td>
+                        <td>55.91KLUX</td>
+                    </tr>
+                    <tr>
+                        <td>2019-07-24</td>
+                        <td>20.40°C</td>
+                        <td>87.06%</td>
+                        <td>353.54PPM</td>
+                        <td>55.91KLUX</td>
+                    </tr>
+                    <tr>
+                        <td>2019-07-22</td>
+                        <td>23.31°C</td>
+                        <td>50.96%</td>
+                        <td>396.03PPM</td>
+                        <td>52.38KLUX</td>
+                    </tr>
+                    <tr>
+                        <td>2019-07-22</td>
+                        <td>23.31°C</td>
+                        <td>50.96%</td>
+                        <td>396.03PPM</td>
+                        <td>52.38KLUX</td>
+                    </tr>
+                    <tr>
+                        <td>2019-07-22</td>
+                        <td>23.31°C</td>
+                        <td>50.96%</td>
+                        <td>396.03PPM</td>
+                        <td>52.38KLUX</td>
+                    </tr>
+                    <tr>
+                        <td>2019-07-22</td>
+                        <td>23.31°C</td>
+                        <td>50.96%</td>
+                        <td>396.03PPM</td>
+                        <td>52.38KLUX</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=f6c87d044b9a05408b26dc6a32ccafb0&plugin=Map3D,AMap.DistrictSearch"></script>
+<script>
+    /*let map = new AMap.Map('map', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:10, //初始化地图层级
+        center: [108.935654,34.388174], //初始化地图中心点
+        mapStyle:'amap://styles/c60552abf431f4b75caf3f066a7cb351'
+    });*/
+    let opts = {
+        subdistrict: 0,
+        extensions: 'all',
+        level: 'city'
+    };
+    //利用行政区查询获取边界构建mask路径
+    //也可以直接通过经纬度构建mask路径
+    let district = new AMap.DistrictSearch(opts);
+    district.search('阎良区', function (status, result) {
+        let bounds = result.districtList[0].boundaries;
+        let mask = []
+        for (let i = 0; i < bounds.length; i += 1) {
+            mask.push([bounds[i]])
+        }
+        let map = new AMap.Map('map', {
+            mask: mask,
+            center: [109.288368, 34.660886],
+            disableSocket: true,
+            mapStyle: 'amap://styles/c60552abf431f4b75caf3f066a7cb351',
+            viewMode: '3D',
+            features: ['bg', 'road', 'building', 'point'],
+            labelzIndex: 130,
+            pitch: 40,
+            zoom: 12,
+            layers: [
+                new AMap.TileLayer.RoadNet({
+                    //rejectMapMask:true
+                }),
+            ]
+        });
+        let maskerIn = new AMap.Marker({
+            position: [109.227843, 34.663092],
+        })
+        //添加高度面
+        let object3Dlayer = new AMap.Object3DLayer({zIndex: 1});
+        map.add(object3Dlayer)
+        let height = -8000;
+        let color = '#0088ffcc';//rgba
+        let wall = new AMap.Object3D.Wall({
+            path: bounds,
+            height: height,
+            color: color
+        });
+        wall.transparent = true
+        object3Dlayer.add(wall)
+        //添加描边
+        for (let i = 0; i < bounds.length; i += 1) {
+            new AMap.Polyline({
+                path: bounds[i],
+                strokeColor: '#0088ffcc',
+                strokeWeight: 4,
+                map: map
+            })
+        }
+    });
+</script>
+<script>
+    let box = document.getElementById("lbe_main1");
+    let lis = document.getElementsByTagName("li");
+    let divs = document.getElementsByName("divkuai")
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].aaa = i;
+        lis[i].onclick = function () {
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].className ="";
+               divs[i].className="s";
+            }
+            this.className = "select";
+            let d = divs[i].className
+            divs[this.aaa].className = d+"elect";
+        }
+    }
+</script>
+<script type="text/javascript">
+    let myChart = echarts.init(document.getElementById("select"));
+    let option = {
+        backgroundColor: "transparent",
+        color: ["#9932CD"],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis:[
+            {
+                type: 'category',
+                splitLine:{show: false},
+                boundaryGap: false,
+                data: ['1', '3', '5', '7', '9', '11', '13','15','17','19'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+        ],
+        yAxis: {
+            x: 'center',
+            type: 'value',
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: ['#6089ff'],
+                    width: 1,
+                    type: 'solid'
+                },
+
+            }
+        },
+        series: [{
+            name: '温度',
+            type: 'line',
+            data: [20, 25, 10, 30, 40, 20, 50,10,60,15]
+        }]
+    };
+    myChart.setOption(option);
+</script>
+<script type="text/javascript">
+    let myChart1 = echarts.init(document.getElementById("select1"));
+    let option1 = {
+        backgroundColor: "transparent",
+        color: ["#9932CD"],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis:[
+            {
+                type: 'category',
+                splitLine:{show: false},
+                boundaryGap: false,
+                data: ['1', '3', '5', '7', '9', '11', '13','15','17','19'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+        ],
+        yAxis: {
+            x: 'center',
+            type: 'value',
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: ['#6089ff'],
+                    width: 1,
+                    type: 'solid'
+                },
+
+            }
+        },
+        series: [{
+            name: '温度',
+            type: 'line',
+            data: [10, 20, 60, 20, 10, 50, 40,30,20,60]
+        }]
+    };
+    myChart1.setOption(option1);
+</script>
+<script type="text/javascript">
+    let myChart2 = echarts.init(document.getElementById("select2"));
+    let option2 = {
+        backgroundColor: "transparent",
+        color: ["#9932CD"],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis:[
+            {
+                type: 'category',
+                splitLine:{show: false},
+                boundaryGap: false,
+                data: ['1', '3', '5', '7', '9', '11', '13','15','17','19'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+        ],
+        yAxis: {
+            x: 'center',
+            type: 'value',
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: ['#6089ff'],
+                    width: 1,
+                    type: 'solid'
+                },
+
+            }
+        },
+        series: [{
+            name: '温度',
+            type: 'line',
+            data: [10, 2, 30, 20, 30, 60, 20,10,60,5]
+        }]
+    };
+    myChart2.setOption(option2);
+</script>
+<script type="text/javascript">
+    let myChart3 = echarts.init(document.getElementById("select3"));
+    let option3 = {
+        backgroundColor: "transparent",
+        color: ["#9932CD"],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis:[
+            {
+                type: 'category',
+                splitLine:{show: false},
+                boundaryGap: false,
+                data: ['1', '3', '5', '7', '9', '11', '13','15','17','19'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                }
+            },
+        ],
+        yAxis: {
+            x: 'center',
+            type: 'value',
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#ffffff'
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: ['#6089ff'],
+                    width: 1,
+                    type: 'solid'
+                },
+
+            }
+        },
+        series: [{
+            name: '温度',
+            type: 'line',
+            data: [60, 15, 10, 60, 50, 20, 30,60,60,15]
+        }]
+    };
+    myChart3.setOption(option3);
+</script>
+<script>
+    let myChart4 = echarts.init(document.getElementById("yibiao"));
+    let option4 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 35, name: "空气温度" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}℃",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart4.setOption(option4);
+</script>
+<script>
+    let myChart5 = this.echarts.init(document.getElementById("yibiao1"));
+    let option5 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 60, name: "空气湿度" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}%",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart5.setOption(option5);
+</script>
+<script>
+    let myChart6 = this.echarts.init(document.getElementById("yibiao2"));
+    let option6 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 75, name: "光照" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}lux",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart6.setOption(option6);
+</script>
+<script>
+    let myChart7 = this.echarts.init(document.getElementById("yibiao3"));
+    let option7 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 35, name: "风速" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}m/s",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart7.setOption(option7);
+</script>
+<script>
+    let myChart8 = this.echarts.init(document.getElementById("yibiao4"));
+    let option8 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 35, name: "风速" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}m/s",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart8.setOption(option8);
+</script>
+<script>
+    let myChart9 = this.echarts.init(document.getElementById("yibiao5"));
+    let option9 = {
+        title: {
+            show: true
+        },
+        tooltip: {
+            show: true,
+            formatter: "{a}：{b}{c}%"
+        },
+        series: [
+            {
+                name: "彩虹仪表盘",
+                data: [{ value: 35, name: "风速" }],
+                type: "gauge",
+                min: 0,
+                max: 100,
+                splitNumber: 6,
+                radius: "100%",
+                center: ["50%", "40%"],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 2,
+                        shadowBlur: 0,
+                        color: [[0.2, "#22bbb9"], [0.8, "#614ec0"], [1, "#ee4b72"]]
+                    }
+                },
+                axisTick: {
+                    show: false //小刻度
+                },
+                axisLabel: {
+                    show: false,
+                    textStyle: {
+                        fontSize: 12
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    length: 8, // 分隔线线长。支持相对半径的百分比,默认 30。
+                    lineStyle: {
+// 分隔线样式。
+                        color: "auto", //线的颜色,默认 #eee。//刻度颜色
+                        opacity: 1, //图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+                        width: 2, //线度,默认 2。
+                        type: "solid", //线的类型,默认 solid。 此外还有 dashed,dotted
+                        shadowBlur: 10, //(发光效果)图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                        shadowColor: "#fff" //阴影颜色。支持的格式同color。
+                    }
+                },
+                pointer: {
+                    show: true,
+                    width: "8%",
+                    length: "60%",
+                    color: "#fff"
+                },
+                itemStyle: {//指针颜色
+                    normal: {
+                        color: "#ffb739"
+                    }
+                },
+                title: {
+                    offsetCenter: [0, "135%"],
+                    textStyle: {
+                        fontSize: 16,
+                        color: "#fff"
+                    }
+                },
+                detail: {
+                    formatter: "{value}m/s",
+                    offsetCenter: ["0", "55%"],
+                    textStyle: {
+                        fontSize: 12,
+                        color: "#fff"
+                    },
+
+                },
+            }
+        ]
+    };
+    myChart9.setOption(option9);
+</script>
+</body>
+</html>

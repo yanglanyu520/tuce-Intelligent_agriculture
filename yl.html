@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>platform-front</title>
+    <link rel="stylesheet" type="text/css" href="css/yl.css" /> 
+<body>
+    <div id="app">
+        <div  id="viewData">
+            <div  class="weatherOnline">
+                <div class="weatherOnline">
+                </div>
+            </div>
+            <div class="gohome1"></div>
+            <div id="gobackbtn" class="goBackPage1 "></div>
+            <div class="time"><span >2019</span>年<span
+                    >8</span>月<span >11</span>日
+                <span >16</span>:<span >05</span></div>
+            <div class="content">
+                <div id="viewPage2">
+                    <div class="bigPic" id="bigPic"><img src="img/dataView/map1.png"alt=""></div>
+                    <div class="echarts">
+                        <div id="pageEcharts">
+
+                          </div>
+                        </div>
+                    </div>
+                    <div  class="coverLay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=f6c87d044b9a05408b26dc6a32ccafb0&plugin=Map3D,AMap.DistrictSearch"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script>
+           var myChart = echarts.init(document.getElementById("pageEcharts"));
+            var option = {
+              backgroundColor:'#000',
+             tooltip: {},
+             grid:{
+                  top:'5%',
+             },
+             legend: {
+                 data:['西安市各区耕地面积统计(单位:万亩)'],
+                 right:'10%',
+                 top:'5%',
+                 textStyle:{
+                     color:'#fff',
+                     fontSize:12,
+                 }
+             },
+             xAxis: {
+                 data: ["新城","碑林","莲湖","雁塔"," 灞桥","未央","阎良","临潼","长安","高陵县","蓝田县","周至县","户县"],       //横坐标
+                 axisTick:{
+                     show:false,
+                 },
+                 axisLabel:{
+                     interval: 0,
+                     rotate:25,
+                     textStyle: {
+                         color:'#fff',
+                          fontSize:12,
+                     }
+                 },
+                 axisLine: {
+                     lineStyle: {
+                         type: 'solid',
+                         color:'#fff',
+                         width:'1  ',                                                //坐标线的宽度
+                       
+                     }
+                 },
+             },
+             yAxis: {
+                 splitLine: {
+                     show: true,
+                     lineStyle:{
+                         color: '#40A1EA',                                         //网格横线颜色
+                         width: 1,
+                         type: 'solid'
+                     }
+                 },
+                 axisLabel: {
+                     textStyle: {
+                         color: '#fff',
+                          fontSize:12,//坐标值得具体的颜色
+                     }
+                 },
+                 axisLine: {
+                     show:false,
+                 },
+             },
+             series: [{
+                 name: '西安市各区耕地面积统计(单位:万亩)',
+                 type: 'bar',
+                 barWidth:15,
+                 data: [30,49,26,60,26,30,20,30,40,50,30,20,30],        //数据
+                 itemStyle: {
+                     normal: {
+                         color: new echarts.graphic.LinearGradient(
+                             0, 0, 0, 1,
+                             [
+                                 {offset: 0, color: '#06B5D7'},                   //柱图渐变色
+                                 {offset: 0.5, color: '#44C0C1'},                 //柱图渐变色
+                                 {offset: 1, color: '#71C8B1'},                   //柱图渐变色
+                             ]
+                         )
+                     },
+                     emphasis: {
+                         color: new echarts.graphic.LinearGradient(
+                             0, 0, 0, 1,
+                             [
+                                 {offset: 0, color: '#71C8B1'},                  //柱图高亮渐变色
+                                 {offset: 0.7, color: '#44C0C1'},                //柱图高亮渐变色
+                                 {offset: 1, color: '#06B5D7'}                   //柱图高亮渐变色
+                             ]
+                         )
+                     }
+                 },
+             }]
+         };
+         myChart.setOption(option);
+         </script>
+
+<script>
+        var map = new AMap.Map('bigPic', {
+            center: [108.941501,34.345403],
+            disableSocket: true,
+            mapStyle: 'amap://styles/c60552abf431f4b75caf3f066a7cb351',
+            // viewMode: '3D',
+            // features: ['bg', 'road', 'building', 'point'],
+        
+            zoom: 9,
+          
+        });
+  var opts = {
+        subdistrict: 0,
+        extensions: 'all',
+        level: 'city'
+    };
+    //利用行政区查询获取边界构建mask路径
+    //也可以直接通过经纬度构建mask路径
+    var district = new AMap.DistrictSearch(opts);
+    district.search('西安市', function (status, result) {
+        var bounds = result.districtList[0].boundaries;
+        var mask = []
+        for (var i = 0; i < bounds.length; i += 1) {
+            mask.push([bounds[i]])
+        }
+        var maskerIn = new AMap.Marker({
+            position: [109.227843, 34.663092],
+        })
+        //添加高度面
+        var object3Dlayer = new AMap.Object3DLayer({zIndex: 1});
+        map.add(object3Dlayer)
+        var height = -8000;
+        var color = '#0088ffcc';//rgba
+        var wall = new AMap.Object3D.Wall({
+            path: bounds,
+            height: height,
+            color: color
+        });
+        wall.transparent = true
+        object3Dlayer.add(wall)
+        //添加描边
+        for (var i = 0; i < bounds.length; i += 1) {
+            new AMap.Polyline({
+                path: bounds[i],
+                strokeColor: '#0088ffcc',
+                // strokeWeight: 4,
+                map: map
+            })
+        }
+    });
+        var district11 = new AMap.DistrictSearch(opts);
+        district11.search('户县', function (status, result) {
+            var bounds11 = result.districtList[1].boundaries;
+            var polygon11 = new AMap.Polygon({
+                map: map,
+                path: bounds11,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+    var district1 = new AMap.DistrictSearch(opts);
+    district1.search('阎良区', function (status, result) {
+        var bounds1 = result.districtList[0].boundaries;
+        var polygon1 = new AMap.Polygon({
+        map: map,
+        path: bounds1,//设置多边形边界路径
+        strokeColor: "#FF34FF", //线颜色
+        strokeOpacity: 0.2, //线透明度
+        strokeWeight: 3,    //线宽
+        fillColor: "yellow", //填充色
+        fillOpacity: 0.8//填充透明度
+    });
+    polygon1.on('click', showInfoP)
+        function showInfoP(){
+           alert("阎良区");
+        }
+    });
+        var district2 = new AMap.DistrictSearch(opts);
+        district2.search('碑林区', function (status, result) {
+            var bounds2 = result.districtList[0].boundaries;
+            var polygon2 = new AMap.Polygon({
+                map: map,
+                path: bounds2,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+
+        var district3 = new AMap.DistrictSearch(opts);
+        district3.search('莲湖区', function (status, result) {
+            var bounds3 = result.districtList[0].boundaries;
+            var polygon3 = new AMap.Polygon({
+                map: map,
+                path: bounds3,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+       /* "新城","碑林","莲湖","雁塔"," 灞桥","未央","阎良","临潼","长安","高陵县","蓝田县","周至县","户县"*/
+
+
+        /*新城区（西一路街道）　碑林区（张家村街道）　莲湖区（北院门街道）
+　灞桥区（纺织城街道）　未央区（张家堡街道）　雁塔区（小寨路街道）
+　阎良区（凤凰路街道）　临潼区（骊山街道） 　长安区（韦曲街道）
+高陵区（鹿苑街道） 　蓝田县（蓝关街道）　　周至县（二曲镇）
+　户　县（甘亭镇）
+
+*/
+        var district4 = new AMap.DistrictSearch(opts);
+        district4.search('雁塔区', function (status, result) {
+            var bounds4 = result.districtList[0].boundaries;
+            var polygon4 = new AMap.Polygon({
+                map: map,
+                path: bounds4,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district5 = new AMap.DistrictSearch(opts);
+        district5.search('灞桥区', function (status, result) {
+            var bounds5 = result.districtList[0].boundaries;
+            var polygon5 = new AMap.Polygon({
+                map: map,
+                path: bounds5,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district6 = new AMap.DistrictSearch(opts);
+        district6.search('未央区', function (status, result) {
+            var bounds6 = result.districtList[0].boundaries;
+            var polygon6 = new AMap.Polygon({
+                map: map,
+                path: bounds6,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district7 = new AMap.DistrictSearch(opts);
+        district7.search('临潼区', function (status, result) {
+            var bounds7 = result.districtList[0].boundaries;
+            var polygon7 = new AMap.Polygon({
+                map: map,
+                path: bounds7,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district8 = new AMap.DistrictSearch(opts);
+        district8.search('高陵区', function (status, result) {
+            var bounds8 = result.districtList[0].boundaries;
+            var polygon8 = new AMap.Polygon({
+                map: map,
+                path: bounds8,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district9 = new AMap.DistrictSearch(opts);
+        district9.search('蓝田县', function (status, result) {
+            var bounds9 = result.districtList[0].boundaries;
+            var polygon9 = new AMap.Polygon({
+                map: map,
+                path: bounds9,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+        var district10 = new AMap.DistrictSearch(opts);
+        district10.search('周至县', function (status, result) {
+            var bounds10 = result.districtList[0].boundaries;
+            var polygon10 = new AMap.Polygon({
+                map: map,
+                path: bounds10,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+
+
+        var district12 = new AMap.DistrictSearch(opts);
+        district12.search('长安区', function (status, result) {
+            var bounds12 = result.districtList[1].boundaries;
+            var polygon12 = new AMap.Polygon({
+                map: map,
+                path: bounds12,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+        var district13 = new AMap.DistrictSearch(opts);
+        district13.search('碑林区', function (status, result) {
+            var bounds13 = result.districtList[0].boundaries;
+            var polygon13 = new AMap.Polygon({
+                map: map,
+                path: bounds13,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+            /* polygon1.on('click', showInfoP)
+                 function showInfoP(){
+                     window.location.href="";
+                 }*/
+        });
+
+       var district11 = new AMap.DistrictSearch(opts);
+        district11.search('户县', function (status, result) {
+            var bounds11 = result.districtList[0].boundaries;
+            var polygon11 = new AMap.Polygon({
+                map: map,
+                path: bounds11,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                fillColor: "#800080", //填充色
+                fillOpacity: 0.35//填充透明度
+            });
+        });
+</script>
+</body>
+</html>

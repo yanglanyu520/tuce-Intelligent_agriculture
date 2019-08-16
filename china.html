@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>platform-front</title>
+    <link rel="stylesheet" type="text/css" href="css/china.css" /> 
+    
+</head>
+<body>
+<div id="app">
+    <div id="viewData">
+        <div class="weatherOnline">
+            <div class="weatherOnline"></div>
+        </div>
+        <div class="gohome1"></div>
+        <div id="gobackbtn" class="goBackPage1 "></div>
+        <!-- <div id="goHome" class="goHome">
+            <div></div>
+            <div id="gobackbtn" class="goBackPage btns"></div>
+        </div> -->
+        <div class="time"><span>2019</span>年<span
+               >8</span>月<span>10</span>日
+            <span>10</span>:<span>46</span></div>
+        <div class="content">
+            <div id="viewPage1">
+            </div>
+            <div class="coverLay" onclick="coverlay()"></div>
+        </div>
+            <!-- <a style="width: 20px;height: 50px;  margin-left: 850px;
+             margin-top: 532px;" href="iot.html">aaaaaa</a> -->
+
+    </div>
+</div>
+<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=f6c87d044b9a05408b26dc6a32ccafb0&plugin=Map3D,AMap.DistrictSearch"></script>
+<script>
+    function coverlay(){
+        window.location.href="sx.html"
+    }
+</script> 
+<script>
+       var map = new AMap.Map('viewPage1', {
+            center: [109.288368, 34.660886],
+            disableSocket: true,
+            mapStyle: 'amap://styles/c60552abf431f4b75caf3f066a7cb351',
+            // viewMode: '3D',
+            // features: ['bg', 'road', 'building', 'point'],
+            labelzIndex: 130,
+            pitch: 40,
+            zoom: 5,
+            layers: [
+                // new AMap.TileLayer.RoadNet({
+                //     //rejectMapMask:true
+                // }),
+            ]
+        });
+  var opts = {
+        subdistrict: 0,
+        extensions: 'all',
+        level: 'city'
+    };
+    //利用行政区查询获取边界构建mask路径
+    //也可以直接通过经纬度构建mask路径
+    var district = new AMap.DistrictSearch(opts);
+    district.search('陕西省', function (status, result) {
+        var bounds = result.districtList[0].boundaries;
+        var mask = []
+        for (var i = 0; i < bounds.length; i += 1) {
+            mask.push([bounds[i]])
+        }
+        var maskerIn = new AMap.Marker({
+            position: [109.227843, 34.663092],
+        })
+        //添加高度面
+       /* var object3Dlayer = new AMap.Object3DLayer({zIndex: 1});*/
+     /*   map.add(object3Dlayer)
+        var height = -8000;
+        var color = '#800080';//rgba*/
+      /*  var wall = new AMap.Object3D.Wall({
+            path: bounds,
+            height: height,
+            color: color
+        });*/
+    /*    wall.transparent = true
+        object3Dlayer.add(wall)*/
+        //添加描边
+        for (var i = 0; i < bounds.length; i += 1) {
+            new AMap.Polyline({
+                path: bounds[i],
+                strokeColor: '#800080',
+                // strokeWeight: 4,
+                map: map
+            })
+        }
+    });
+</script>
+</body>
+</html>

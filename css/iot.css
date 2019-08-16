@@ -1,0 +1,252 @@
+  * {
+            magin: 0;
+            padding: 0;
+        }
+        html body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        .app {
+            magin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            color: #2c3e50;
+
+        }
+        .zhenjian {
+            height: 969px;
+            background-color: #050a1e;
+            position: relative
+        }
+
+        #map {
+            position: absolute;
+            top: 90px;
+            left: calc(50% - 430px);
+            width: 860px;
+            height: 860px;
+            background: url(../img/zhenjiang/bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .xcqx {
+            position: absolute;
+            top: 89px;
+            left: 40px;
+            width: 468px;
+            z-index: 800;
+            height: 268px;
+        }
+
+        .xcqx_header {
+            height: 58px;
+            background: url(../img/zhenjiang/title.png) no-repeat;   background: url(../img/zhenjiang/title.png) no-repeat;
+            background-size: 100% 100%;
+            font-size: 18px;
+            padding-left: 12px;
+            line-height: 58px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .xcqx_main {
+            display: block;
+            flex-wrap: wrap;
+            height: 250px;
+            padding: 10px 25px;
+            background: url(../img/zhenjiang/nyziyuan/border_1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .sssp {
+            position: absolute;
+            top: 400px;
+            left: 40px;
+            width: 468px;
+            z-index: 999;
+            height: 550px;
+        }
+
+        .sssp_hearder {
+            display: block;
+            height: 58px;
+            background: url(../img/zhenjiang/title.png) no-repeat;
+            background-size: 100% 100%;
+            font-size: 18px;
+            padding-left: 12px;
+            line-height: 58px;
+            color: #fff;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .sssp_main {
+            display: block;
+            height: 482px;
+            padding: 10px;
+            background: url(../img/zhenjiang/nyziyuan/border_2.png) no-repeat;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            margin-top: 0px;
+        }
+
+        .nav {
+            height: 90px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9991;
+            background: url(../img/zhenjiang/head.png) no-repeat;
+            background-size: 100% 100%;
+        }
+         .nav h1{
+             display: block;
+             font-size: 40px;
+             color: #fff;
+             font-size: 2em;
+             font-weight: bold;
+         }
+
+        .lbe {
+            top: 90px;
+            right: 40px;
+            position: absolute;
+            width: 468px;
+
+
+        }
+        .lbe_hearder {
+            height: 58px;
+            background: url(../img/zhenjiang/title.png) no-repeat;
+            background-size: 100% 100%;
+            font-size: 18px;
+            padding-left: 12px;
+            line-height: 58px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .lbe_main {
+            height: 370px;
+            padding-top: 30px;
+            background: url(../img/zhenjiang/nyziyuan/border_3.png) no-repeat;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            margin-top: 0px;
+        }
+
+        .nydata {
+            position: absolute;
+            top: 531px;
+            right: 40px;
+            width: 468px;
+            z-index: 999;
+        }
+
+        .nydata_hearder {
+            height: 58px;
+            background: url(../img/zhenjiang/title.png) no-repeat;
+            background-size: 100% 100%;
+            font-size: 18px;
+            padding-left: 12px;
+            line-height: 58px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .nydata_main {
+            height: 361px;
+            background: url(../img/zhenjiang/nyziyuan/border_3.png) no-repeat;
+            background-size: 100% 100%;
+            position: relative;
+            box-sizing: border-box;
+            margin-top: -4px;
+        }
+
+
+        .nydata_main thead{
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        .sensor-table{
+            width: 99%;
+            height: 100%;
+            color: #87afeb;
+            margin: 3px;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 14px;
+            display: table;
+            border-spacing: 2px;
+            border-color: grey;
+        }
+
+
+        .sssp_main>.myVideo{
+            width: 90%;
+            height: 195px;
+            margin: 0 auto 30px;
+            border: 1px solid #1ba6ff;
+        }
+
+        .xcqx_main>ul{
+            width: 100%;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+         .lbe_main>ul{
+            width: 349px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .lbe_main>ul>li{
+            width: 57px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #6089ff;
+            color: #fff;
+            list-style: none;
+        }
+
+        .nongqi>ul>.select{
+            background-color: #2cbcff;
+            color: #0a1a3d;
+        }
+        .echarts1 >.s{
+            display: none;
+
+        }
+        .echarts1>.select{
+            display: block;
+        }
+         .nav div[data-v-dd779392]{
+             position: relative;
+             font-size: 26px;
+             color: #3b93ff;
+             line-height: 55px;
+             width: 196px;
+             text-align: center;
+             cursor: pointer;
+         }

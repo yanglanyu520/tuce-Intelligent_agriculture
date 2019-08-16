@@ -1,0 +1,76 @@
+html, body, #app
+{
+height: 100%;
+padding: 0px;
+margin: 0px;
+}
+#app{
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+  #viewData{
+      width: 1920px;
+      height: 1080px;
+      background-color: bisque;
+      background: url(../img/dataView/bg.png) no-repeat 0 0;
+      background-size: 100% 100%;
+      padding-top: 85px;
+      position: relative;
+      box-sizing: border-box;
+  }
+.weatherOnline{
+    width: 400px;
+    position: absolute;
+    left: 35px;
+    top: 20px;
+}
+.gohome1{
+  cursor: pointer;
+  background: url(../img/icon/home.png);
+  z-index: 9999990;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  right: 15%;
+  top: 4%;
+}
+.goBackPage1{
+  cursor: pointer;
+  width: 24px;
+  height: 22px;
+  z-index: 9999990;
+  position: absolute;
+  right: 20%;
+  top: 4%;
+  background: url(../img/icon/back.png);
+}
+.time{
+    color: #7acbff;
+    position: absolute;
+    right: 75px;
+    top: 40px;
+    font-size: 20px;
+}
+ .content{
+     width: 100%;
+     height: 995px;
+     position: relative;
+ }
+ #viewPage1{
+     width: 100%;
+     height: 100%;
+ }
+ .coverLay{
+     width: 150px;
+     height: 150px;
+     position: absolute;
+     left: 870px;
+     top: 432px;
+     -webkit-transform: rotate(64deg);
+     transform: rotate(64deg);
+     cursor: pointer;
+     /* border: 1px solid red; */
+ }

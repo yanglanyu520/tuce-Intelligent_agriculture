@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- <link rel="stylesheet" href="../css/video.css"> -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    .shipin {
+        position: relative;
+        height: 100%;
+    }
+
+    #btns {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        /* height: 38px; */
+        height: 17%;
+        /* line-height: 50px; */
+        background-color: rgba(11, 76, 108, 0.8);
+        /* padding: 0 10px 0 40px; */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #btns div {
+        display: inline-block;
+        /* width: 25px;
+    height: 25px; */
+        width: 6vw;
+        height: 6vw;
+    }
+
+    #btns div i {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        /* width: 25px;
+    height: 25px;
+    margin-right: 5px; */
+    }
+
+    #btns div:nth-child(1) i {
+        /* width: 26px;
+    height: 25px; */
+        background: url("/static/img/videoBtns/yuan.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(2) {
+        /* margin-right: 12px; */
+    }
+
+    #btns div:nth-child(2) i {
+        /* width: 26px;
+    height: 25px; */
+        background: url("/static/img/videoBtns/jin.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(3) i {
+        background: url("/static/img/videoBtns/shang.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(4) i {
+        background: url("/static/img/videoBtns/xia.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(5) i {
+        background: url("/static/img/videoBtns/zuo.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(6) {
+        /* margin-right: 16px; */
+    }
+
+    #btns div:nth-child(6) i {
+        background: url("/static/img/videoBtns/you.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(7) i {
+        background: url("/static/img/videoBtns/shangzuo.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(8) i {
+        background: url("/static/img/videoBtns/shangyou.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(9) i {
+        background: url("/static/img/videoBtns/xiazuo.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(10) {
+        /* margin-right: 12px; */
+    }
+
+    #btns div:nth-child(10) i {
+        background: url("/static/img/videoBtns/xiayou.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    #btns div:nth-child(11) i {
+        background: url("/static/img/videoBtns/auto.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .cvs {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+    }
+</style>
+
+<body>
+    <!--<div class="shipin" onmouseover="hover()" onmouseleave="leave()">-->
+    <div class="shipin" id="myPlayer" ondblclick="fullSreen()">
+        <div>
+            <!--<button type="button" onclick="login()">登录</button>-->
+            <!--<button type="button" onclick="getUrl()">获取信息</button>-->
+        </div>
+        <canvas class="cvs" id="canvas" style="background: black;">
+  </canvas>
+        <!--<button type="button" onclick="startView()">开始播放</button>-->
+        <!--<button type="button" onclick="stopView()">关闭播放</button>-->
+        <!-- <div id="btns">
+    <div ontouchstart="control(0)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(1)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(6)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(7)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(8)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(9)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(10)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(11)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(12)" ontouchend="stop()"><i></i></div>
+    <div ontouchstart="control(13)" ontouchend="stop()"><i></i></div>
+    <div onclick="getAutomate()"><i></i></div>
+  </div> -->
+    </div>
+</body>
+
+</html>
+<script src="jquery-2.0.2.min.js" type="text/javascript"></script>
+
+<!--slplayer.js文件-->
+<script type="text/javascript" src="slplayer.js"></script>
+<script>
+    // function hover() {
+    //   let btns = document.getElementById('btns');
+    //   btns.style.display = "block";
+    // }
+    //
+    // function leave() {
+    //   let btns = document.getElementById('btns');
+    //   btns.style.display = "none";
+    // }
+
+    function getAutomate() { //手自动切换
+        var automateIndex = 0;
+        if (automateIndex != 1) {
+            automateIndex = 1;
+            control(8);
+        } else {
+            stop();
+            automateIndex = 0;
+        }
+
+    }
+
+    function speed() {
+        var param = {
+            "chan_serial": chanid, // 获取预览的url接口，只需要通道id一个参数
+            "action": 15,
+            "speed": 3
+        };
+        // ajax post方式发送请求
+        ajaxPost("http://" + serveip + ":18003/webapi/v4/ptz/control?tk=" + tk, param, function(res) {
+            // ajaxPost("http://"+ serveip +":18003/webapi/v4/channel/ability?tk="+tk,param,function(res){
+            console.log(JSON.stringify(res));
+        });
+    }
+
+    function control(num) {
+        var param = {
+            "chan_serial": chanid, // 获取预览的url接口，只需要通道id一个参数
+            "action": num,
+        };
+
+
+        // ajax post方式发送请求
+        ajaxPost("http://" + serveip + ":18003/webapi/v4/ptz/control?tk=" + tk, param, function(res) {
+            // ajaxPost("http://"+ serveip +":18003/webapi/v4/channel/ability?tk="+tk,param,function(res){
+            console.log(JSON.stringify(res));
+        });
+    }
+
+    function stop() {
+        var param = {
+            "chan_serial": chanid, // 获取预览的url接口，只需要通道id一个参数
+            "action": 14,
+        };
+        // ajax post方式发送请求
+        ajaxPost("http://" + serveip + ":18003/webapi/v4/ptz/control?tk=" + tk, param, function(res) {
+            // ajaxPost("http://"+ serveip +":18003/webapi/v4/channel/ability?tk="+tk,param,function(res){
+            console.log(JSON.stringify(res));
+        });
+    }
+
+    var chanid = "M070F-C0401196J02:7";
+    var serveip = "49.4.69.19";
+    var account = "admin";
+    var pwd = "Admin123";
+
+    //ajax的post请求
+    function ajaxPost(url, data, fn) {
+        $.ajax({
+            method: "POST",
+            url: url,
+            headers: {
+                //                "Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            data: JSON.stringify(data),
+
+            traditional: true,
+
+            success: fn,
+
+            error: function() {
+                console.log("服务器或网络错误：", url);
+            }
+        });
+    }
+
+    var tk = ""; // 用来保存登录时获取的token，并作为申请预览时的url附带参数
+    // 登录
+    function login() {
+        var param = {
+            "user": account, //用户名
+            "password": pwd, //密码
+            "force": 0, //是否强制登录 0=不强制登录，用户在线时提示失败 1=强制登录，把在线的用户给踢下去（int）
+            "login_mode": 0 //0=允许多点登录 1=不允许多点登录（int）
+        };
+        // ajax post方式发送请求
+        ajaxPost("http://" + serveip + ":18003/webapi/login", param, function(res) {
+            if (res.ret == 0) {
+                // alert("-----登录成功");
+                tk = res.tk
+                getUrl();
+                speed();
+            } else {
+                alert("-----" + res.msg)
+            }
+        });
+    }
+
+    var liveUrl = "";
+
+    // 获取预览的url
+    function getUrl() {
+        var param = {
+            "chan_serial": chanid // 获取预览的url接口，只需要通道id一个参数
+        };
+        // ajax post方式发送请求
+        ajaxPost("http://" + serveip + ":18003/webapi/v4/preview/view?tk=" + tk, param, function(res) {
+            console.log(JSON.stringify(res));
+            if (res.ret == 0) {
+                liveUrl = res.view_context;
+                startView()
+            } else {
+                console.log(res.msg)
+            }
+        });
+    }
+
+    // 定义创建播放器对像
+    var player = "";
+
+    $(function() {
+        // 初始化播放器对象
+        var Module = {
+            /* ************************************ */
+            // 定义视频画布
+            canvas: document.getElementById("canvas"),
+            /* ************************************ */
+            // 设置相应的事件回调
+            onStart: function() {
+                console.log("onStart...")
+            },
+            onEnd: function() { //播放器结束回调
+                console.log("onEnd...")
+            },
+            onError: function(code, err) { //播放器错误回调，收到此回调后代表着播放结束，不再发送onEnd回调
+                console.log('error: ', code, err);
+            },
+            onVideoStart: function() { //连接服务器成功后的回调
+                console.log('onVideoStart。。。');
+            },
+            // 录像回放中返回时间刻度
+            onPlayTime: function(ts) { //回放时播放时间戳通知
+                if (ts == 0) return;
+                var date = new Date(ts * 1000); //如果date为10位不需要乘1000
+                var Y = date.getFullYear() + '-';
+                var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+                var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+                var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+                var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+                var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                var timestamp = Y + M + D + h + m + s;
+                // console.log(timestamp)
+            }
+        };
+
+        // 创建播放器对像
+        // 此方法只适用于支持H5的游览器，不支持IE系统
+        SLPlayer(Module).then(function(obj) {
+
+            player = obj;
+            console.log("实例成功")
+            login();
+        });
+
+        // 定时器测压力
+        //循环执行，每隔1秒钟执行一次 1000
+        // window.setInterval(getUrl, 1000);
+    });
+
+    // 开始播放
+    function startView() {
+        player.start(liveUrl)
+    }
+
+    // 结束播放
+    function stopView() {
+        player.stop()
+    }
+    // 拿到要全屏显示的div
+    var myPlayer = document.getElementById("myPlayer")
+
+    // 全屏
+    var fullSreen = function() {
+        console.log('双击')
+        // var myPlayerflashId = document.getElementsByName("myPlayerflashId")
+        if (isFullscreen()) {
+            exitFullscreen()
+        } else {
+            launchIntoFullscreen(myPlayer)
+
+        }
+    }
+    // 封装全屏的方法
+    function launchIntoFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    }
+    // 封装退出全屏的方法
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+    // 判断是否全屏状态
+    function isFullscreen() {
+        if (navigator.userAgent.indexOf("Firefox") != -1) {
+            return document.mozFullScreen;
+        } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+            return document.webkitIsFullScreen;
+        }
+        return document.fullscreen;
+    }
+</script>

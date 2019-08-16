@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+   overflow: auto;
+}
+ body {
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+}
+
+.app {
+    padding: 0;
+    height: 100%;
+ /*   font-family: Avenir, Helvetica, Arial, sans-serif;*/
+    -webkit-font-smoothing: antialiased;
+    color: #2c3e50;
+}
+
+.zhenjian {
+    height: 969px;
+    background-color: #050a1e;
+    position: relative;
+    overflow: auto;
+}
+
+#map {
+    position: absolute;
+    top: 90px;
+    left: calc(50% - 430px);
+    width: 860px;
+    height: 870px;
+    background: url(../img/zhenjiang/bg.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.nav {
+    height: 90px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9991;
+    background: url(../img/zhenjiang/head.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.nav div[data-v-dd779392] {
+    position: relative;
+    font-size: 26px;
+    color: #3b93ff;
+    line-height: 55px;
+    width: 196px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ncplist {
+    position: absolute;
+    top: 89px;
+    left: 40px;
+    width: 468px;
+    z-index: 800;
+    height: 860px;
+}
+
+
+.ncplist_header {
+    height: 58px;
+    background: url(../img/zhenjiang/title.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: 18px;
+    padding-left: 12px;
+    line-height: 58px;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.ncplist_main {
+    display: block;
+    flex-wrap: wrap;
+    height: 320px;
+    padding: 10px 25px;
+    background: url(../img/zhenjiang/nyziyuan/border_1.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.ncplist_main_ul{
+             display: inline-block;
+         }
+
+
+.ncplist_main>ul>li{
+    width: 100px;
+    height: 60px;
+    float: left;
+    display: inline;
+    cursor: pointer;
+    color: #fff;
+    list-style: none;
+    background-color: #6089ff;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 60px;
+    
+}
+
+.treasure>ul>.select{
+    background-color: #2cbcff;
+    color: #0a1a3d;
+}
+
+.bwjj {
+    top: 90px;
+    right: 40px;
+    position: absolute;
+    width: 468px;
+}
+
+.bwjj_hearder {
+    position: relative;
+    height: 58px;
+    background: url(../img/zhenjiang/title.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: 18px;
+    padding-left: 12px;
+    line-height: 58px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.bwjj_main {
+    position: relative;
+    height: 355px;
+    background: url(../img/zhenjiang/nyziyuan/border_1.png) no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    margin-top: 12px;
+}
+.nyfw {
+    position: absolute;
+    width: 468px;
+    height: 310px;
+    top: 635px;
+    right: 40px;
+    z-index: 999;
+}
+
+.nyfw_header {
+    position: relative;
+    height: 58px;
+    font-size: 18px;
+    padding-left: 12px;
+    line-height: 58px;
+    color: #fff;
+    background: url(../img/zhenjiang/title.png) no-repeat;
+    background-size: 100% 100%;
+    font-weight: 700;
+    top:-110px;
+}
+
+.nyfw_main {
+    position: relative;
+    height: 367px;
+    padding: 25px 25px 0;
+    background: url(../img/border_5.png) no-repeat !important;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    margin-top: -100px;
+}
+
+.bwjj_main >.s {
+    display: none;
+}
+
+.bwjj_main >.select {
+    display: block;
+}
+.zytj{
+    top: 490px;
+    height: 470px;
+    left: 40px;
+    position: absolute;
+    width: 468px;
+    z-index: 999;
+}
+.zytj_header{
+    position: relative;
+    height: 58px;
+    background: url(../img/zhenjiang/title.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: 18px;
+    padding-left: 12px;
+    line-height: 58px;
+    color: #fff;
+    font-weight: 700;
+}
+.zytj_main{
+    position: relative;
+    height: 400px;
+    padding: 25px 25px 0;
+    background: url(../img/zhenjiang/nyshengchan/border_4.png) no-repeat !important;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+
+
+}

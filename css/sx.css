@@ -1,0 +1,135 @@
+html, body, #app {
+    height: 100%;
+      padding: 0px;
+         margin: 0px;
+    }
+    #app {
+       font-family: Avenir,Helvetica,Arial,sans-serif;
+      -webkit-font-smoothing: antialiased;
+        color: #2c3e50;
+        margin: 0;
+       padding: 0;
+}
+#viewData {
+width: 1900px;
+height: 1080px;
+background-color: bisque;
+background: url(../img/dataView/bg.png) no-repeat 0 0;
+background-size: 100% 100%;
+padding-top: 85px;
+position: relative;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+.weatherOnline {
+width: 400px;
+position: absolute;
+left: 35px;
+top: 20px;
+   }
+.gohome1, .goHome>div:first-of-type
+{
+cursor: pointer;
+background: url(../img/icon/home.png);
+z-index: 9999990;
+}
+.gohome1 {
+width: 26px;
+height: 26px;
+position: absolute;
+right: 15%;
+top: 4%;
+}
+.goBackPage1 {
+cursor: pointer;
+width: 24px;
+height: 22px;
+z-index: 9999990;
+position: absolute;
+right: 20%;
+top: 4%;
+background: url(../img/icon/back.png);
+}
+.goHome {
+width: 70px;
+height: 120px;
+border-radius: 4px;
+background: #fff;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+flex-direction: column;
+-webkit-box-align: center;
+align-items: center;
+justify-content: space-around;
+opacity: .5;
+position: absolute;
+right: 0;
+top: 50%;
+z-index: 999999;
+}
+
+.goBackPage {
+cursor: pointer;
+width: 30px;
+height: 30px;
+z-index: 9999990;
+background: url(../img/icon/back.png);
+background-size: 100% 100%;
+}
+.btns {
+color: #e41111;
+cursor: pointer;
+}
+.time {
+color: #7acbff;
+position: absolute;
+right: 75px;
+top: 40px;
+font-size: 20px;
+}
+.content {
+width: 100%;
+height: 995px;
+position: relative;
+}
+#viewPage2 {
+width: 100%;
+height: 100%;
+}
+.bigPic {
+width: 1373px;
+height: 908px;
+position: absolute;
+top: 40px;
+left: 40px;
+}
+.echarts  {
+width: 450px;
+height: 604px;
+background: url(../img/dataView/page2right.png) -50px -40px no-repeat;
+position: absolute;
+top: 40px;
+right: 40px;
+}
+#pageEcharts{
+width: 100%;
+height: 100%;
+float: left;
+position: relative;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.coverLay {
+width: 126px;
+height: 287px;
+position: absolute;
+left: 643px;
+top: 610px;
+cursor: pointer;
+-webkit-transform: rotate(83deg);
+transform: rotate(83deg);
+}
