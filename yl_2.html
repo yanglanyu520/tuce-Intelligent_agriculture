@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>platform-front</title>
+    <link rel="stylesheet" type="text/css" href="css/yl.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/tck.css" />
+    <link rel="stylesheet" type="text/css" href="css/yl_maker.css" />
+<body>
+<div id="app">
+    <div  id="viewData">
+        <div  class="weatherOnline">
+            <div class="weatherOnline">
+            </div>
+        </div>
+        <div class="gohome1"></div>
+        <div id="gobackbtn" class="goBackPage1 "></div>
+        <div class="time"><span >2019</span>年<span
+        >8</span>月<span >11</span>日
+            <span >16</span>:<span >05</span></div>
+        <div class="content">
+            <div id="viewPage2">
+                <div class="bigPic" id="bigPic">
+                </div>
+                <div class="echarts" id="echarts_1">
+                    <ul id="echarts_ul">
+                        <li class="" onclick="yl_2()">主要指标</li>
+                        <li class="" onclick="yyzcz()">农林牧渔业总产值(各镇街)</li>
+                        <li class="select">农林牧渔业总产值及指数(年份 )</li>
+                    </ul>
+                    <div name="divkuai" class="find" id="pageEcharts1">
+                        <div class="p1" id="p1_1"></div>
+                        <div class="p2" id="p2_2"></div>
+                        <div class="p3" id="p3_3"></div>
+                        <div class="p4" id="p4_4"></div>
+                        <div class="p5" id="p5_5"></div>
+                    </div>
+                </div>
+            </div>
+            <!--    <div  class="coverLay"></div>-->
+        </div>
+    </div>
+</div>
+</div>
+<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=f6c87d044b9a05408b26dc6a32ccafb0&plugin=Map3D,AMap.DistrictSearch"></script>
+<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script>
+    function yl_2() {
+        window.location.href="yl.html";
+    }
+    function yyzcz() {
+        window.location.href="yl_1.html";
+    }
+</script>
+<script type="text/javascript" src="js/yl_2.js"></script>
+<script type="text/javascript" src="js/yl_2_marker.js"></script>
+</body>
+</html>
