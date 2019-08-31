@@ -194,17 +194,61 @@
             display: table;
             border-spacing: 2px;
             border-color: grey;
+            font-weight: 700;
         }
 
 
         .sssp_main>.myVideo{
+            position: relative;
             width: 90%;
-            height: 195px;
+            height: 210px;
             margin: 0 auto 30px;
             border: 1px solid #1ba6ff;
         }
 
-        .xcqx_main>ul{
+  .sssp_main>.myVideo>.mv_fs{
+      position: absolute;
+      width: 200px;
+      height: 100px;
+      margin-top: -145px;
+     /* border: 1px solid red;*/
+  }
+
+/*  .sssp_main>.myVideo.mv_fs>ul{
+      column-count:2;
+  }*/
+  .sssp_main>.myVideo>.mv_fs>ul>li{
+      margin-top: 0px;
+      float: left;
+      width:90%;
+     color: #FFFFFF;
+      font-size: 13px;
+      list-style: none;
+      font-weight: bold;
+      line-height: 22px;
+  }
+
+  .sssp_main>.myVideo>.mv_fs1{
+      position: absolute;
+      width: 200px;
+      height: 100px;
+      margin-top: -145px;
+  }
+ /* .sssp_main>.myVideo.mv_fs1>ul{
+         column-count:2;
+  }*/
+  .sssp_main>.myVideo>.mv_fs1>ul>li{
+      margin-top: 0px;
+      float: left;
+      width: 90%;
+      color: #FFFFFF;
+      font-size: 13px;
+      list-style: none;
+      font-weight: bold;
+      line-height: 22px;
+  }
+
+  .xcqx_main>ul{
             width: 100%;
             -webkit-box-pack: justify;
             justify-content: space-between;
@@ -228,8 +272,9 @@
             background-color: #6089ff;
             color: #fff;
             list-style: none;
-        }
+            font-weight: bold;
 
+        }
         .nongqi>ul>.select{
             background-color: #2cbcff;
             color: #0a1a3d;

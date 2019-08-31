@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/zndp.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <style>
         .nongqi_right>ul>.find{
             background-color: #2cbcff;
@@ -199,7 +200,6 @@
                      <div name="divkuai1" class="f" id="select7" style="width: 580px;height: 280px;margin-left:-23px"></div>
                  </div>
              </div>
-
          <div class="wssj_right">
                  <div class="right_header3">温室内环境历史数据</div>
                  <table class="sensor-table1">
@@ -270,15 +270,37 @@
          <iframe src="https://www.thingjs.com/guide/sampleindex.html?m=Q-84DC0862F3CBC0C0DB4608B7CD80240F/19t119028131.js" width="740" height="530"frameborder="no"></iframe>
          </div>
            <div class="xmsp">
-               <div class="myvideo" style="width:365px;height:285px;float: left " >
-                  <iframe src="html/nyboliwenshi.html" frameborder="0"
-                          style="width: 100%; height: 100%;">
-                  </iframe>
-               </div>
-               <div class="myvideo" style="width:370px;height:285px;float: right">
-                   <iframe src="html/wscl.html" frameborder="0"
+                   <div class="myvideo" style="width:365px;height:285px;float:left">
+                       <iframe src="http://114.67.97.221:9222/upload/htmls/video/video1.html
+                  " frameborder="0"
+                               style="width: 100%; height: 100%;">
+                       </iframe>
+                       <div class="mv_fs">
+                           <ul>
+                               <li>温度:25.6℃</li>
+                               <li>CO2:893ppm</li>
+                               <li>湿度:20%RH</li>
+                               <li>土壤温度:25.6℃</li>
+                               <li>光照度:400Lux</li>
+                               <li>土壤湿度:20%RH</li>
+                           </ul>
+                       </div>
+                   </div>
+               <div class="myvideo1" style="width:370px;height:285px;float: right">
+                   <iframe src="http://114.67.97.221:9222/upload/htmls/video/video2.html
+                   " frameborder="0"
                            style="width: 100%; height: 100%;">
                    </iframe>
+                   <div class="mv_fs1">
+                       <ul>
+                           <li>温度:25.6℃</li>
+                           <li>CO2:893ppm</li>
+                           <li>湿度:20%RH</li>
+                           <li>土壤温度:25.6℃</li>
+                           <li>光照度:400Lux</li>
+                           <li>土壤湿度:20%RH</li>
+                       </ul>
+                   </div>
                </div>
            </div>
      </div>
@@ -317,7 +339,26 @@
         }
     }
 </script>
+<script>
+      /*function myvideo() {
+          window.location.href="http://114.67.97.221:9222/upload/htmls/video/video1.html";
+      }*/
+  function myV1() {
+      window.location.href="http://114.67.97.221:9222/upload/htmls/video/video1.html";
+
+  }
+
+
+
+</script>
+
+
+
+
+<!-- <script type="text/javascript" src="html/slplayer.js"></script>
+<script type="text/javascript" src="html/sldecoder.js"></script> -->
 <script type="text/javascript" src="js/echarts_center_right.js"></script>
+
 <!--
  中间的echarts
 -->

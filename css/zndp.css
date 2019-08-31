@@ -255,22 +255,64 @@
 .zjdp{
      position: absolute;
        width: 740px;
-       height: 530px;
-       margin: 100px 100px 100px 590px;
-        padding: 10px 10px 10px 10px; 
+        height: 530px;
+      left: 588px;
+       top: 100px;
+    /*    padding: 10px 10px 10px 10px; */
        border : 1px solid #28e6f4;
 
 
 }
 .xmsp{
     position: absolute;
-     width: 743px;
+     width: 740px;
     height: 285px;
-    margin: 645px 100px 100px 590px;
+    left: 588px;
+    top: 643px;
     border: 1px solid #28e6f4;
 }
 
+.xmsp>.myvideo>.mv_fs{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    margin-top: -150px;
+    /* border: 1px solid red;*/
+}
 
+/*  .sssp_main>.myVideo.mv_fs>ul{
+      column-count:2;
+  }*/
+.xmsp>.myvideo>.mv_fs>ul>li{
+    margin-top: 0px;
+    float: left;
+    width:90%;
+    color: #FFFFFF;
+    font-size: 13px;
+    list-style: none;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.xmsp>.myvideo1>.mv_fs1{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    margin-top: -150px;
+}
+/* .sssp_main>.myVideo.mv_fs1>ul{
+        column-count:2;
+ }*/
+.xmsp>.myvideo1>.mv_fs1>ul>li{
+    margin-top: 0px;
+    float: left;
+    width: 90%;
+    color: #FFFFFF;
+    font-size: 13px;
+    list-style: none;
+    font-weight: bold;
+    line-height: 25px;
+}
 
 
 

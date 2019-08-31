@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/iot.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 </head>
 <body>
     <script type="text/javascript" src="js/echarts.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script>
-     let currentActiveRow;
-    function iot(div){
+
+    function iot(){
            window.location.href="iot.html";
-    }
+     }
     
   function nysc(){
       window.location.href="tsny.html";
@@ -34,7 +35,6 @@
             <div data-v-dd779392 class="rightNav">农业监管</div>
             <div data-v-dd779392 class="rightNav">数据查询</div>
             <div data-v-dd779392 class="rightNav">农民收入</div>
-
         </div>
         <div class="xcqx">
             <div class="xcqx_header">现场气象信息</div>
@@ -77,13 +77,33 @@
         <div class="sssp">
             <div class="sssp_hearder">实时视频</div>
             <div class="sssp_main">
-                <div class="myVideo" style="margin-top: 30px;">
+                <div class="myVideo" style="margin-top: 5px;">
                     <iframe src="http://114.67.97.221:9222/upload/htmls/video/video1.html" frameborder="0"
                              style="width: 100%; height: 100%;"></iframe>
+                    <div class="mv_fs">
+                        <ul>
+                            <li>温度:25.6℃</li>
+                            <li>CO2:893ppm</li>
+                            <li>湿度:20%RH</li>
+                            <li>土壤温度:25.6℃</li>
+                            <li>光照度:400Lux</li>
+                            <li>土壤湿度:20%RH</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="myVideo">
-                    <iframe  src="http://114.67.97.221:9222/upload/htmls/video/video1.html" frameborder="0"
+                    <iframe  src="http://114.67.97.221:9222/upload/htmls/video/video2.html" frameborder="0"
                              style="width: 100%; height: 100%;"></iframe>
+                    <div class="mv_fs1">
+                        <ul>
+                            <li>温度:25.6℃</li>
+                            <li>CO2:893ppm</li>
+                            <li>湿度:20%RH</li>
+                            <li>土壤温度:25.6℃</li>
+                            <li>光照度:400Lux</li>
+                            <li>土壤湿度:20%RH</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,7 +229,7 @@
             center: [109.288368, 34.660886],
             disableSocket: true,
             mapStyle: 'amap://styles/c60552abf431f4b75caf3f066a7cb351',
-            viewMode: '3D',
+        /*    viewMode: '3D',*/
             features: ['bg', 'road', 'building', 'point'],
             labelzIndex: 130,
             pitch: 40,

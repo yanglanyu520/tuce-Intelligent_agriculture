@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
     <title>platform-front</title>
-    <link rel="stylesheet" type="text/css" href="css/sx.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/sx.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 <body>
     <div id="app">
         <div  id="viewData">
@@ -20,14 +21,9 @@
                 <span >16</span>:<span >05</span></div>
             <div  class="content">
                 <div id="viewPage2">
-                    <div class="bigPic" id="bigPic"><img src="/9025/img/dataView/map1.png"alt=""></div>
-                    <div class="echarts">
-                        <div id="pageEcharts">
-
-                          </div>
-                        </div>
+                    <div class="bigPic" id="bigPic"></div>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="coverLay" onclick="sx()"></div>
@@ -38,117 +34,72 @@
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
     <script type="text/javascript" src="js/echarts.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script>
-            function sx(){
-             window.location.href="yl.html"
-           }  
-       </script>
-    <script>
-           var myChart = echarts.init(document.getElementById("pageEcharts"));
-            var option = {
-              backgroundColor:'#000',
-             tooltip: {},
-             grid:{
-                  top:'5%',
-             },
-             legend: {
-                 data:['陕西省耕地面积统计(单位:万亩)'],
-                 right:'10%',
-                 top:'5%',
-                 textStyle:{
-                     color:'#fff',
-                     fontSize:12,
-                 }
-             },
-             xAxis: {
-                 data: ["西安市","宝鸡市"," 咸阳市","铜川市"," 渭南市"," 延安市"," 榆林市"," 汉中市"," 安康市","商洛市"],       //横坐标
-                 axisTick:{
-                     show:false,
-                 },
-                 axisLabel:{
-                     interval: 0,
-                     rotate:25,
-                     textStyle: {
-                         color:'#fff',
-                          fontSize:12,
-                     }
-                 },
-                 axisLine: {
-                     lineStyle: {
-                         type: 'solid',
-                         color:'#fff',
-                         width:'1  ',                                                //坐标线的宽度
-                       
-                     }
-                 },
-             },
-             yAxis: {
-                 splitLine: {
-                     show: true,
-                     lineStyle:{
-                         color: '#40A1EA',                                         //网格横线颜色
-                         width: 1,
-                         type: 'solid'
-                     }
-                 },
-                 axisLabel: {
-                     textStyle: {
-                         color: '#fff',
-                          fontSize:12,//坐标值得具体的颜色
-                     }
-                 },
-                 axisLine: {
-                     show:false,
-                 },
-             },
-             series: [{
-                 name: '陕西省耕地面积统计(单位:万亩)',
-                 type: 'bar',
-                 barWidth:15,
-                 data: [30,49,26, 60,26,30,20,30,40,50],        //数据
-                 itemStyle: {
-                     normal: {
-                         color: new echarts.graphic.LinearGradient(
-                             0, 0, 0, 1,
-                             [
-                                 {offset: 0, color: '#06B5D7'},                   //柱图渐变色
-                                 {offset: 0.5, color: '#44C0C1'},                 //柱图渐变色
-                                 {offset: 1, color: '#71C8B1'},                   //柱图渐变色
-                             ]
-                         )
-                     },
-                     emphasis: {
-                         color: new echarts.graphic.LinearGradient(
-                             0, 0, 0, 1,
-                             [
-                                 {offset: 0, color: '#71C8B1'},                  //柱图高亮渐变色
-                                 {offset: 0.7, color: '#44C0C1'},                //柱图高亮渐变色
-                                 {offset: 1, color: '#06B5D7'}                   //柱图高亮渐变色
-                             ]
-                         )
-                     }
-                 },
-             }]
-         };
-         myChart.setOption(option);
-         </script>
 <script>
         var map = new AMap.Map('bigPic', {
-            center: [109.326881,35.735885],
+            center: [108.960981,34.620348],
             disableSocket: true,
             mapStyle: 'amap://styles/c60552abf431f4b75caf3f066a7cb351',
             // viewMode: '3D',
             zoom: 7,
-            
         });
   var opts = {
         subdistrict: 0,
         extensions: 'all',
         level: 'city'
     };
+          var district = new AMap.DistrictSearch(opts);
+          district.search('陕西省', function (status, result) {
+            var bounds = result.districtList[0].boundaries;
+            var mask = []
+            for (var i = 0; i < bounds.length; i += 1) {
+                mask.push([bounds[i]])
+            }
+            var maskerIn = new AMap.Marker({
+                position: [109.227843, 34.663092],
+            })
+            //添加高度面
+            var object3Dlayer = new AMap.Object3DLayer({zIndex: 1});
+            map.add(object3Dlayer)
+            var height = -8000;
+            var color = '#0088ffcc';//rgba
+            var wall = new AMap.Object3D.Wall({
+                path: bounds,
+                height: height,
+                color: color
+            });
+            wall.transparent = true
+            object3Dlayer.add(wall)
+            //添加描边
+            for (var i = 0; i < bounds.length; i += 1) {
+                new AMap.Polyline({
+                    path: bounds[i],
+                    strokeColor: '#0088ffcc',
+                    // strokeWeight: 4,
+                    map: map
+                });
+            }
+        });
+        var district1 = new AMap.DistrictSearch(opts);
+        district1.search('西安市', function (status, result) {
+            var bounds1 = result.districtList[0].boundaries;
+            var polygon1 = new AMap.Polygon({
+                map: map,
+                path: bounds1,//设置多边形边界路径
+                strokeColor: "#FF34FF", //线颜色
+                strokeOpacity: 0.2, //线透明度
+                strokeWeight: 3,    //线宽
+                //fillColor: "yellow", //填充色
+                fillOpacity: 0.8//填充透明度
+            });
+              polygon1.on('click', showInfoP)
+              function showInfoP(){
+                  alert("西安市");
+              }
+        });
+
     //利用行政区查询获取边界构建mask路径
     //也可以直接通过经纬度构建mask路径
-    var district = new AMap.DistrictSearch(opts);
+   /* var district = new AMap.DistrictSearch(opts);
     district.search('陕西省', function (status, result) {
         var bounds = result.districtList[0].boundaries;
         var mask = []
@@ -182,17 +133,22 @@
     });
     var district1 = new AMap.DistrictSearch(opts);
     district1.search('西安市', function (status, result) {
-        var bounds11 = result.districtList[0].boundaries;
-        var polygon1 = new AMap.Polygon({
+        var bounds1 = result.districtList[0].boundaries;
+        var polygon2 = new AMap.Polygon({
         map: map,
-        path: bounds11,//设置多边形边界路径
+        path: bounds1,//设置多边形边界路径
         strokeColor: "#FF34FF", //线颜色
         strokeOpacity: 0.2, //线透明度
         strokeWeight: 3,    //线宽
         fillColor: "#800080", //填充色
         fillOpacity: 0.35//填充透明度
     });
-    });
+      polygon2.on('click',showInfox)
+              function showInfox() {
+                  window.location.href="yl.html";
+              }
+
+    });*/
 </script>
 </body>
 </html>

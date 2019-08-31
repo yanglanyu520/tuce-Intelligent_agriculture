@@ -3,6 +3,8 @@ html, body, #app
 height: 100%;
 padding: 0px;
 margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 #app{
     font-family: Avenir,Helvetica,Arial,sans-serif;
@@ -14,7 +16,6 @@ margin: 0px;
   #viewData{
       width: 1920px;
       height: 1080px;
-      background-color: bisque;
       background: url(../img/dataView/bg.png) no-repeat 0 0;
       background-size: 100% 100%;
       padding-top: 85px;
